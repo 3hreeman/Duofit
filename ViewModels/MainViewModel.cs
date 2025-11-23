@@ -14,6 +14,7 @@ namespace Duofit.ViewModels;
 public partial class MainViewModel : BaseViewModel
 {
     private readonly IWorkoutService _workoutService;
+    private readonly IDialogService _dialogService;
 
     [ObservableProperty]
     private ObservableCollection<WorkoutSession> workoutSessions = new();
@@ -21,10 +22,19 @@ public partial class MainViewModel : BaseViewModel
     [ObservableProperty]
     private WorkoutSession? selectedWorkoutSession;
 
-    public MainViewModel(IWorkoutService workoutService)
+    public MainViewModel(IWorkoutService workoutService, IDialogService dialogService)
     {
         _workoutService = workoutService;
+        _dialogService = dialogService;
         Title = "Duofit - Workout Tracker";
+    }
+
+    /// <summary>
+    /// Initialize the ViewModel by loading data
+    /// </summary>
+    public async Task InitializeAsync()
+    {
+        await LoadWorkoutSessionsAsync();
     }
 
     /// <summary>
@@ -49,7 +59,7 @@ public partial class MainViewModel : BaseViewModel
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error", $"Failed to load workout sessions: {ex.Message}", "OK");
+            await _dialogService.DisplayAlertAsync("Error", $"Failed to load workout sessions: {ex.Message}", "OK");
         }
         finally
         {
@@ -82,11 +92,11 @@ public partial class MainViewModel : BaseViewModel
             var createdSession = await _workoutService.CreateWorkoutSessionAsync(newSession);
             WorkoutSessions.Insert(0, createdSession);
             
-            await Shell.Current.DisplayAlert("Success", "Workout session added successfully!", "OK");
+            await _dialogService.DisplayAlertAsync("Success", "Workout session added successfully!", "OK");
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error", $"Failed to add workout session: {ex.Message}", "OK");
+            await _dialogService.DisplayAlertAsync("Error", $"Failed to add workout session: {ex.Message}", "OK");
         }
         finally
         {
@@ -105,7 +115,7 @@ public partial class MainViewModel : BaseViewModel
 
         try
         {
-            var confirm = await Shell.Current.DisplayAlert(
+            var confirm = await _dialogService.DisplayConfirmAsync(
                 "Confirm Delete",
                 $"Are you sure you want to delete '{session.Name}'?",
                 "Yes",
@@ -120,12 +130,12 @@ public partial class MainViewModel : BaseViewModel
             if (success)
             {
                 WorkoutSessions.Remove(session);
-                await Shell.Current.DisplayAlert("Success", "Workout session deleted successfully!", "OK");
+                await _dialogService.DisplayAlertAsync("Success", "Workout session deleted successfully!", "OK");
             }
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error", $"Failed to delete workout session: {ex.Message}", "OK");
+            await _dialogService.DisplayAlertAsync("Error", $"Failed to delete workout session: {ex.Message}", "OK");
         }
         finally
         {

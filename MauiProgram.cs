@@ -25,6 +25,7 @@ public static class MauiProgram
 
         // Register Services (Business Logic Layer)
         builder.Services.AddSingleton<IWorkoutService, WorkoutService>();
+        builder.Services.AddSingleton<IDialogService, DialogService>();
 
         // Register ViewModels (Presentation Logic Layer)
         builder.Services.AddTransient<MainViewModel>();

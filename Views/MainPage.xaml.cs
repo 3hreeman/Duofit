@@ -9,12 +9,18 @@ namespace Duofit.Views;
 /// </summary>
 public partial class MainPage : ContentPage
 {
+    private readonly MainViewModel _viewModel;
+
     public MainPage(MainViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = viewModel;
-        
-        // Load data when page appears
-        Loaded += async (s, e) => await viewModel.LoadWorkoutSessionsCommand.ExecuteAsync(null);
+        _viewModel = viewModel;
+        BindingContext = _viewModel;
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await _viewModel.InitializeAsync();
     }
 }

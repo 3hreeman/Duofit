@@ -17,31 +17,34 @@ public interface IWorkoutService
 
 public class WorkoutService : IWorkoutService
 {
+    private const int SimulatedOperationDelayMs = 100;
+    private const int SimulatedQuickOperationDelayMs = 50;
+    
     private readonly List<WorkoutSession> _workoutSessions = new();
 
     public async Task<List<WorkoutSession>> GetWorkoutSessionsAsync()
     {
         // Simulate async operation
-        await Task.Delay(100);
+        await Task.Delay(SimulatedOperationDelayMs);
         return _workoutSessions.OrderByDescending(w => w.SessionDate).ToList();
     }
 
     public async Task<WorkoutSession?> GetWorkoutSessionByIdAsync(string id)
     {
-        await Task.Delay(50);
+        await Task.Delay(SimulatedQuickOperationDelayMs);
         return _workoutSessions.FirstOrDefault(w => w.Id == id);
     }
 
     public async Task<WorkoutSession> CreateWorkoutSessionAsync(WorkoutSession session)
     {
-        await Task.Delay(50);
+        await Task.Delay(SimulatedQuickOperationDelayMs);
         _workoutSessions.Add(session);
         return session;
     }
 
     public async Task<WorkoutSession> UpdateWorkoutSessionAsync(WorkoutSession session)
     {
-        await Task.Delay(50);
+        await Task.Delay(SimulatedQuickOperationDelayMs);
         var existingSession = _workoutSessions.FirstOrDefault(w => w.Id == session.Id);
         if (existingSession != null)
         {
@@ -54,7 +57,7 @@ public class WorkoutService : IWorkoutService
 
     public async Task<bool> DeleteWorkoutSessionAsync(string id)
     {
-        await Task.Delay(50);
+        await Task.Delay(SimulatedQuickOperationDelayMs);
         var session = _workoutSessions.FirstOrDefault(w => w.Id == id);
         if (session != null)
         {
