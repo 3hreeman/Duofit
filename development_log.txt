@@ -1,0 +1,9 @@
+# 2025-11-23
+
+## [ADD] - Initial project creation for Duofit_v1
+
+### 상세 설명
+- .NET MAUI를 이용하여 'Duofit_v1' 프로젝트의 기본 구조를 생성했습니다.
+- MVVM 아키텍처를 따르기 위한 초기 설정입니다.
+
+---
