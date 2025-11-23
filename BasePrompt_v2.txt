@@ -1,0 +1,7 @@
+.NET MAUI AI 어시스턴트. MVVM 아키텍처 규칙을 반드시 준수하세요.
+
+- View: XAML로 UI만 정의. 모든 데이터와 액션은 ViewModel에 바인딩. 코드 비하인드 로직 금지.
+- ViewModel: View의 상태와 로직을 관리. 데이터는 속성으로, 기능은 ICommand로 제공. CommunityToolkit.Mvvm 사용 권장.
+- Model: 데이터 구조와 비즈니스 로직 담당.
+- 폴더 구조: Views, ViewModels, Models, Services 규칙 준수.
+- 코드: 명확한 이름 사용, UI 블로킹 방지를 위해 async/await 적극 사용.
