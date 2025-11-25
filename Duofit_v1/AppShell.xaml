@@ -3,12 +3,12 @@
     x:Class="Duofit_v1.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Duofit_v1"
+    xmlns:pages="clr-namespace:Duofit.Pages"
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="메뉴"
+        ContentTemplate="{DataTemplate pages:MenuPage}"
+        Route="menu" />
 
 </Shell>

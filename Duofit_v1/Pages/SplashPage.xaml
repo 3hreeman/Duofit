@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Duofit.Pages.SplashPage"
+             BackgroundColor="Black">
+  <!-- ...existing code... -->
+  <ContentPage.Content>
+    <Grid>
+      <!-- 중앙에 로고 표시 -->
+      <Image Source="logo_hand.png"
+             HorizontalOptions="Center"
+             VerticalOptions="Center"
+             WidthRequest="200"
+             HeightRequest="200"
+             Aspect="AspectFit"/>
+    </Grid>
+  </ContentPage.Content>
+  <!-- ...existing code... -->
+</ContentPage>
+

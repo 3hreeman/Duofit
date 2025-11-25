@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Duofit.Pages.MenuPage"
+             Title="메뉴"
+             BackgroundColor="Black"
+             SizeChanged="OnPageSizeChanged">
+
+    <Grid x:Name="MenuGrid"
+          RowDefinitions="*,*"
+          ColumnDefinitions="*,*"
+          RowSpacing="0"
+          ColumnSpacing="0"
+          Padding="0"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="Black">
+
+        <Button x:Name="StopwatchButton"
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="스톱워치"
+                FontSize="24"
+                FontAttributes="Bold"
+                BackgroundColor="#1E88E5"
+                TextColor="White"
+                CornerRadius="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Clicked="OnStopwatchClicked"
+                SemanticProperties.Hint="스톱워치로 이동합니다" />
+
+        <Button x:Name="MetronomeButton"
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="메트로놈"
+                FontSize="24"
+                FontAttributes="Bold"
+                BackgroundColor="#43A047"
+                TextColor="White"
+                CornerRadius="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Clicked="OnMetronomeClicked"
+                SemanticProperties.Hint="메트로놈으로 이동합니다" />
+
+        <Button x:Name="FeatureButton3"
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="다음 기능"
+                FontSize="22"
+                BackgroundColor="#FBC02D"
+                TextColor="Black"
+                CornerRadius="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Clicked="OnComingSoonClicked"
+                SemanticProperties.Hint="추후 개발 예정 기능입니다" />
+
+        <Button x:Name="FeatureButton4"
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="예약 기능"
+                FontSize="22"
+                BackgroundColor="#D81B60"
+                TextColor="White"
+                CornerRadius="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Clicked="OnComingSoonClicked"
+                SemanticProperties.Hint="추후 개발 예정 기능입니다" />
+
+    </Grid>
+
+</ContentPage>

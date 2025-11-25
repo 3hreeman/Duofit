@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Duofit.Pages.StopwatchPage"
+             Title="스톱워치"
+             BackgroundColor="Black">
+
+    <ContentPage.Content>
+        <Grid Padding="24" RowDefinitions="*,auto">
+            <Label
+                Text="스톱워치 기능"
+                FontSize="24"
+                TextColor="White"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Grid.Row="0" />
+            <Label
+                Text="추후 구현 예정"
+                FontSize="18"
+                TextColor="#B0BEC5"
+                HorizontalOptions="Center"
+                Grid.Row="1" />
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>
+
