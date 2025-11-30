@@ -47,15 +47,15 @@
         <Button x:Name="FeatureButton3"
                 Grid.Row="1"
                 Grid.Column="0"
-                Text="다음 기능"
+                Text="타이머"
                 FontSize="22"
                 BackgroundColor="#FBC02D"
                 TextColor="Black"
                 CornerRadius="0"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand"
-                Clicked="OnComingSoonClicked"
-                SemanticProperties.Hint="추후 개발 예정 기능입니다" />
+                Clicked="OnTimerClicked"
+                SemanticProperties.Hint="타이머로 이동합니다" />
 
         <Button x:Name="FeatureButton4"
                 Grid.Row="1"

@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace Duofit_v1;
+namespace Duofit;
 
 public class Program
 {

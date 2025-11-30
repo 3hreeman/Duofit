@@ -2,7 +2,7 @@ using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace Duofit_v1;
+namespace Duofit;
 
 class Program : MauiApplication
 {

@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace Duofit_v1;
+namespace Duofit;
 
 [Application]
 public class MainApplication : MauiApplication

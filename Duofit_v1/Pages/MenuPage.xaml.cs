@@ -32,6 +32,11 @@ namespace Duofit.Pages
 		{
 			await Shell.Current.GoToAsync(nameof(MetronomePage));
 		}
+		
+		async void OnTimerClicked(object sender, System.EventArgs e)
+		{
+			await Shell.Current.GoToAsync(nameof(TimerPage));
+		}
 
 		void OnComingSoonClicked(object sender, System.EventArgs e)
 		{

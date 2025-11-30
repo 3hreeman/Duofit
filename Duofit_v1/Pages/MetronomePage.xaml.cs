@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Dispatching;
+﻿using System.Diagnostics;
 
 namespace Duofit.Pages;
 
@@ -117,7 +113,8 @@ public partial class MetronomePage : ContentPage
         // Simple animation: toggle opacity/scale
         PulseBox.ScaleTo(1.08, 80, Easing.CubicOut);
         PulseBox.FadeTo(0.18, 80);
-        Device.StartTimer(TimeSpan.FromMilliseconds(120), () =>
+        // replace obsolete Device.StartTimer with Dispatcher
+        PulseBox.Dispatcher.StartTimer(TimeSpan.FromMilliseconds(120), () =>
         {
             PulseBox.ScaleTo(1.0, 100, Easing.CubicIn);
             PulseBox.FadeTo(0.08, 100);
@@ -138,4 +135,3 @@ public partial class MetronomePage : ContentPage
             _beatTimer.Stop();
     }
 }
-

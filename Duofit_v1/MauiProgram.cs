@@ -1,4 +1,4 @@
-﻿namespace Duofit_v1;
+﻿namespace Duofit;
 
 public static class MauiProgram
 {

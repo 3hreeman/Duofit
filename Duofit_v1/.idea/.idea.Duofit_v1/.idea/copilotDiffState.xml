@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/Platforms/Android/MainApplication.cs">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Platforms/Android/MainApplication.cs" />
+              <option name="originalContent" value="using Android.App;&#10;using Android.Runtime;&#10;&#10;namespace Duofit_v1;&#10;&#10;[Application]&#10;public class MainApplication : MauiApplication&#10;{&#10;&#9;public MainApplication(IntPtr handle, JniHandleOwnership ownership)&#10;&#9;&#9;: base(handle, ownership)&#10;&#9;{&#10;&#9;}&#10;&#10;&#9;protected override MauiApp CreateMauiApp() =&gt; MauiProgram.CreateMauiApp();&#10;}&#10;" />
+              <option name="updatedContent" value="using Android.App;&#13;&#10;using Android.Runtime;&#13;&#10;&#13;&#10;namespace Duofit;&#13;&#10;&#13;&#10;[Application]&#13;&#10;public class MainApplication : MauiApplication&#13;&#10;{&#13;&#10;&#9;public MainApplication(IntPtr handle, JniHandleOwnership ownership)&#13;&#10;&#9;&#9;: base(handle, ownership)&#13;&#10;&#9;{&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;protected override MauiApp CreateMauiApp() =&gt; MauiProgram.CreateMauiApp();&#13;&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

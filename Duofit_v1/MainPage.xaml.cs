@@ -1,4 +1,4 @@
-﻿namespace Duofit_v1;
+﻿namespace Duofit;
 
 public partial class MainPage : ContentPage
 {
@@ -21,4 +21,3 @@ public partial class MainPage : ContentPage
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
 }
-

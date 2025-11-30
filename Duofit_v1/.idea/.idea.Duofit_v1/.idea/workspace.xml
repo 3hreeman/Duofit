@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2c5bbaaa-2de4-420a-b0f3-36e20a2f69de" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/deploymentTargetSelector.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_activity_activity.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_activity_activity_ktx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_annotation_annotation.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_annotation_annotation_experimental.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_appcompat_appcompat.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_appcompat_appcompat_resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_arch_core_core_common.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_arch_core_core_runtime.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_asynclayoutinflater_asynclayoutinflater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_browser_browser.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_cardview_cardview.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_collection_collection.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_collection_collection_ktx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_concurrent_concurrent_futures.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_constraintlayout_constraintlayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_constraintlayout_constraintlayout_core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_coordinatorlayout_coordinatorlayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_core_core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_core_core_ktx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_cursoradapter_cursoradapter.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_customview_customview.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_documentfile_documentfile.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_drawerlayout_drawerlayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_dynamicanimation_dynamicanimation.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_emoji2_emoji2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_emoji2_emoji2_views_helper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_exifinterface_exifinterface.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_fragment_fragment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_fragment_fragment_ktx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_interpolator_interpolator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_legacy_legacy_support_core_ui.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_legacy_legacy_support_core_utils.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_legacy_legacy_support_v4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_lifecycle_lifecycle_common.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_lifecycle_lifecycle_livedata.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_lifecycle_lifecycle_livedata_core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_lifecycle_lifecycle_livedata_core_ktx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_lifecycle_lifecycle_process.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_lifecycle_lifecycle_runtime.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_lifecycle_lifecycle_runtime_ktx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_lifecycle_lifecycle_viewmodel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_lifecycle_lifecycle_viewmodel_ktx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_lifecycle_lifecycle_viewmodel_savedstate.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_loader_loader.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_localbroadcastmanager_localbroadcastmanager.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_media_media.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_navigation_navigation_common.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_navigation_navigation_fragment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_navigation_navigation_runtime.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_navigation_navigation_ui.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_print_print.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_recyclerview_recyclerview.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_resourceinspection_resourceinspection_annotation.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_savedstate_savedstate.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_savedstate_savedstate_ktx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_security_security_crypto.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_slidingpanelayout_slidingpanelayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_startup_startup_runtime.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_swiperefreshlayout_swiperefreshlayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_tracing_tracing.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_transition_transition.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_vectordrawable_vectordrawable.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_vectordrawable_vectordrawable_animated.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_versionedparcelable_versionedparcelable.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_viewpager2_viewpager2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_viewpager_viewpager.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/androidx_window_window.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/annotations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/com_google_android_material_material.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/disklrucache.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/gifdecoder.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/glide.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/guava_listenablefuture.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/maui.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/org_jetbrains_annotations_23_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/org_jetbrains_kotlin_kotlin_stdlib_1_6_20.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/org_jetbrains_kotlin_kotlin_stdlib_common_1_6_20.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_6_20.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/org_jetbrains_kotlin_kotlin_stdlib_jdk8_1_6_20.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/org_jetbrains_kotlinx_kotlinx_coroutines_android_1_6_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/libraries/org_jetbrains_kotlinx_kotlinx_coroutines_core_jvm_1_6_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Duofit_v1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/App.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppShell.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/AppShell.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppShell.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppShell.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Duofit_v1.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Duofit_v1.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Duofit_v1.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Duofit.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/MainPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MainPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MauiProgram.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MauiProgram.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/MenuPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/MenuPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/MenuPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/MenuPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/MetronomePage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/MetronomePage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/Android/MainActivity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/Android/MainActivity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/Android/MainApplication.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/Android/MainApplication.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/MacCatalyst/AppDelegate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/MacCatalyst/AppDelegate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/MacCatalyst/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/MacCatalyst/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/Tizen/Main.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/Tizen/Main.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/Tizen/tizen-manifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/Tizen/tizen-manifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/Windows/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/Windows/App.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/Windows/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/Windows/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/Windows/app.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/Windows/app.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/iOS/AppDelegate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/iOS/AppDelegate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/iOS/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Platforms/iOS/Program.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;3hreeman&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/3hreeman/Duofit&quot;,
+    &quot;accountId&quot;: &quot;5a58b446-67a4-488b-858d-9584a2cd757d&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Pages/MetronomePage.xaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Platforms/Android/MainApplication.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Platforms/MacCatalyst/AppDelegate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Platforms/MacCatalyst/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Platforms/Tizen/Main.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Platforms/Windows/App.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Platforms/iOS/AppDelegate.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Platforms/iOS/Program.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="Duofit_v1/invalid/Android Facet - Duofit_v1" />
+    </ignored-facets>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="35sXfLiJ1XiMV7wLtAU6Ll0uNBh" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android.Duofit_v1.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Android.Duofit_v1">
+    <configuration name="Duofit_v1" type="UwpProject" factoryName="UWP">
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Duofit_v1.csproj" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Duofit_v1" type="XamarinAndroidProject" factoryName="Xamarin.Android">
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Duofit_v1.csproj" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="DEPLOY_BEHAVIOUR_NAME" value="Default" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Duofit_v1" type="XamarinIOSProject" factoryName="Xamarin.iOS">
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Duofit_v1.csproj" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="IS_PASS_PARENT_ENVS" value="false" />
+      <option name="EXTRA_MLAUNCH_PARAMETERS" value="" />
+      <option name="PLATFORM_TYPE" value="IOS" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Duofit_v1" type="XamarinMacProject" factoryName="Xamarin.Mac">
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Duofit_v1.csproj" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS_MAC" value="1" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2c5bbaaa-2de4-420a-b0f3-36e20a2f69de" name="Changes" comment="" />
+      <created>1763899855954</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763899855954</updated>
+      <workItem from="1763899857860" duration="773000" />
+      <workItem from="1763907892163" duration="304000" />
+      <workItem from="1763908208689" duration="2636000" />
+      <workItem from="1763912063215" duration="157000" />
+      <workItem from="1764080218718" duration="5701000" />
+      <workItem from="1764504722225" duration="3982000" />
+      <workItem from="1764508982541" duration="2673000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

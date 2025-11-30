@@ -1,7 +1,7 @@
 ﻿using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 
-namespace Duofit_v1
+namespace Duofit
 {
 	public partial class App : Application
 	{

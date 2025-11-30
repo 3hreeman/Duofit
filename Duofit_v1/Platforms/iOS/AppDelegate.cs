@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace Duofit_v1;
+namespace Duofit;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate
