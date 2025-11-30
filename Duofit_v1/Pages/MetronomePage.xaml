@@ -5,23 +5,55 @@
              Title="메트로놈"
              BackgroundColor="Black">
 
-    <ContentPage.Content>
-        <Grid Padding="24" RowDefinitions="*,auto">
-            <Label
-                Text="메트로놈 기능"
-                FontSize="24"
-                TextColor="White"
-                HorizontalTextAlignment="Center"
-                VerticalTextAlignment="Center"
-                Grid.Row="0" />
-            <Label
-                Text="추후 구현 예정"
-                FontSize="18"
-                TextColor="#B0BEC5"
-                HorizontalOptions="Center"
-                Grid.Row="1" />
+    <ContentPage.Resources>
+        <Style x:Key="BigBpmStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="72" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#00E5FF" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="SmallLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="#CFD8DC" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*,auto,auto" Padding="16" RowSpacing="12">
+        <!-- Central visual + BPM -->
+        <Grid Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+            <AbsoluteLayout WidthRequest="280" HeightRequest="280">
+                <!-- background circular frame -->
+                <Frame x:Name="PulseFrame" BackgroundColor="Transparent" BorderColor="#0DFFFFFF" CornerRadius="140" WidthRequest="280" HeightRequest="280" AbsoluteLayout.LayoutBounds="0.5,0.5,280,280" AbsoluteLayout.LayoutFlags="PositionProportional" HasShadow="False" />
+                <!-- animated inner circle -->
+                <BoxView x:Name="PulseBox" Color="#00E5FF" Opacity="0.08" CornerRadius="140" WidthRequest="200" HeightRequest="200" AbsoluteLayout.LayoutBounds="0.5,0.5,200,200" AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                <!-- BPM label centered -->
+                <StackLayout AbsoluteLayout.LayoutBounds="0.5,0.5,AutoSize,AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional" Spacing="2" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label x:Name="BpmLabel" Text="120" Style="{StaticResource BigBpmStyle}" />
+                    <Label Text="BPM" Style="{StaticResource SmallLabelStyle}" />
+                </StackLayout>
+            </AbsoluteLayout>
         </Grid>
-    </ContentPage.Content>
+
+        <!-- Controls: Slider + Tap Tempo -->
+        <StackLayout Grid.Row="1" Spacing="8" Padding="6">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="12">
+                <Label Text="30" Style="{StaticResource SmallLabelStyle}" VerticalOptions="Center" />
+                <Slider x:Name="BpmSlider" Minimum="30" Maximum="240" Value="120" HorizontalOptions="FillAndExpand" ValueChanged="OnBpmSliderChanged" />
+                <Label Text="240" Style="{StaticResource SmallLabelStyle}" VerticalOptions="Center" />
+            </StackLayout>
+
+            <Grid ColumnDefinitions="*,auto" ColumnSpacing="12">
+                <Button x:Name="TapTempoButton" Text="TAP TEMPO" BackgroundColor="#263238" TextColor="#ECEFF1" CornerRadius="20" HeightRequest="44" Clicked="OnTapTempoClicked" />
+                <Button x:Name="StartStopButton" Text="START" BackgroundColor="#FF9800" TextColor="#212121" CornerRadius="22" HeightRequest="44" Clicked="OnStartStopClicked" />
+            </Grid>
+        </StackLayout>
+
+        <!-- Footer hint -->
+        <Label Grid.Row="2" Text="Tap 'TAP TEMPO' to set tempo. Visual pulse indicates beats." Style="{StaticResource SmallLabelStyle}" HorizontalTextAlignment="Center" />
+
+    </Grid>
 
 </ContentPage>
-

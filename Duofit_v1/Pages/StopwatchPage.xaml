@@ -5,23 +5,71 @@
              Title="스톱워치"
              BackgroundColor="Black">
 
+    <ContentPage.Resources>
+        <!-- 간단한 숫자 디지털 폰트를 사용; 프로젝트에 추가된 폰트가 없으면 시스템 폰트로 대체 -->
+        <Style x:Key="MainTimeStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="48" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#00E5FF" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="SubTimeStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="#B2FF59" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <Grid Padding="24" RowDefinitions="*,auto">
-            <Label
-                Text="스톱워치 기능"
-                FontSize="24"
-                TextColor="White"
-                HorizontalTextAlignment="Center"
-                VerticalTextAlignment="Center"
-                Grid.Row="0" />
-            <Label
-                Text="추후 구현 예정"
-                FontSize="18"
-                TextColor="#B0BEC5"
-                HorizontalOptions="Center"
-                Grid.Row="1" />
+        <Grid RowDefinitions="auto,auto,*,auto" Padding="12" RowSpacing="8">
+            <!-- 스테이터스바 영역 (미니멀) -->
+            <Grid Grid.Row="0" HeightRequest="24">
+                <Label Text="" />
+            </Grid>
+
+            <!-- 메인 타이머 + 원형 아크 -->
+            <Grid Grid.Row="1" Padding="6" HorizontalOptions="Center" VerticalOptions="Center">
+                <!-- 원형 아크(간단한 비주얼을 위해 Frame과 BoxView를 겹침) -->
+                <Grid WidthRequest="260" HeightRequest="260">
+                    <Frame BackgroundColor="Transparent" BorderColor="Transparent" HasShadow="False" CornerRadius="130">
+                        <Grid>
+                            <!-- 외곽 원: 얇은 원형 테두리 -->
+                            <Frame BackgroundColor="Transparent" BorderColor="#0DFFFFFF" CornerRadius="130" HasShadow="False" Padding="0" />
+                            <!-- 강조 색상 아크: 단순화하여 원의 일부로 표현 -->
+                            <BoxView Color="#00E5FF" Opacity="0.12" CornerRadius="130" />
+                        </Grid>
+                    </Frame>
+
+                    <!-- 시간 표시 (중앙) -->
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="4">
+                        <Label x:Name="MainTimeLabel" Text="00:02:45.78" Style="{StaticResource MainTimeStyle}" />
+                        <Label x:Name="LapTimeLabel" Text="Lap: 00:00:15.22" Style="{StaticResource SubTimeStyle}" />
+                    </StackLayout>
+                </Grid>
+            </Grid>
+
+            <!-- 랩 리스트 -->
+            <StackLayout Grid.Row="2" Spacing="4">
+                <CollectionView x:Name="LapCollectionView" HeightRequest="160" SelectionMode="None" BackgroundColor="Transparent">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="8" ColumnDefinitions="auto, *" RowDefinitions="auto">
+                                <Label Text="{Binding Number}" TextColor="#CFD8DC" FontSize="16" HorizontalOptions="Start" />
+                                <Label Text="{Binding Time}" TextColor="#ECEFF1" FontSize="16" HorizontalOptions="End" Grid.Column="1" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+            <!-- 컨트롤 버튼 -->
+            <Grid Grid.Row="3" ColumnDefinitions="*,*" ColumnSpacing="12" Padding="12">
+                <Button x:Name="LapButton" Text="LAP" BackgroundColor="#212121" TextColor="#ECEFF1" FontAttributes="Bold" CornerRadius="28" HeightRequest="56" Clicked="OnLapClicked" />
+                <Button x:Name="StartStopButton" Grid.Column="1" Text="START" BackgroundColor="#FF9800" TextColor="#212121" FontAttributes="Bold" CornerRadius="28" HeightRequest="56" Clicked="OnStartStopClicked" />
+            </Grid>
+
         </Grid>
     </ContentPage.Content>
 
 </ContentPage>
-
