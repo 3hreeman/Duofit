@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Dispatching;
 
 namespace Duofit.Pages;
 
@@ -61,12 +58,20 @@ public partial class StopwatchPage : ContentPage
 
     void UpdateUi(TimeSpan elapsed)
     {
-        var ts = elapsed;
-        string mainText = string.Format("{0:D2}:{1:D2}:{2:D2}.{3:D2}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+        UpdateCurrentLapTime(elapsed);
+        UpdateLapTime(elapsed);
+    }
+    
+    void UpdateCurrentLapTime(TimeSpan elapsed)
+    {
+        string mainText = $"{elapsed.Hours:D2}:{elapsed.Minutes:D2}:{elapsed.Seconds:D2}.{elapsed.Milliseconds / 10:D2}";
         MainTimeLabel.Text = mainText;
+    }
 
-        var lapSpan = ts - _lastLapElapsed;
-        string lapText = $"Lap: {string.Format("{0:D2}:{1:D2}:{2:D2}.{3:D2}", lapSpan.Hours, lapSpan.Minutes, lapSpan.Seconds, lapSpan.Milliseconds / 10)}";
+    void UpdateLapTime(TimeSpan elapsed)
+    {
+        var lapSpan = elapsed - _lastLapElapsed;
+        string lapText = $"Lap: {lapSpan.Hours:D2}:{lapSpan.Minutes:D2}:{lapSpan.Seconds:D2}.{lapSpan.Milliseconds / 10:D2}";
         LapTimeLabel.Text = lapText;
     }
 
@@ -109,6 +114,11 @@ public partial class StopwatchPage : ContentPage
             return;
         }
 
+        AddLap();
+    }
+
+    void AddLap()
+    {
         var elapsed = _stopwatch.Elapsed;
         var lapTime = elapsed - _lastLapElapsed;
         _lapCounter++;
@@ -116,8 +126,9 @@ public partial class StopwatchPage : ContentPage
 
         _laps.Insert(0, new LapItem
         {
-            Number = $"Lap {_lapCounter}",
-            Time = string.Format("{0:D2}:{1:D2}:{2:D2}.{3:D2}", lapTime.Hours, lapTime.Minutes, lapTime.Seconds, lapTime.Milliseconds / 10)
+            Id = _lapCounter,
+            LapTime = lapTime,
+            ElapsedTime = elapsed
         });
 
         // Limit number of laps shown to reasonable amount (e.g., 200)
@@ -139,7 +150,8 @@ public partial class StopwatchPage : ContentPage
 
     class LapItem
     {
-        public string Number { get; set; } = "";
-        public string Time { get; set; } = "";
+        public int Id { get; set; }
+        public TimeSpan LapTime { get; set; }
+        public TimeSpan ElapsedTime { get; set; }
     }
 }

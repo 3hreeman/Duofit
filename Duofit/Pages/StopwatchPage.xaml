@@ -50,18 +50,21 @@
             </Grid>
 
             <!-- 랩 리스트 -->
-            <StackLayout Grid.Row="2" Spacing="4">
-                <CollectionView x:Name="LapCollectionView" HeightRequest="160" SelectionMode="None" BackgroundColor="Transparent">
+            <Grid Grid.Row="2" RowDefinitions="Auto, *, Auto" RowSpacing="8">
+                <BoxView Grid.Row="0" HeightRequest="1" Color="#303030" Margin="8,0"/>
+                <CollectionView Grid.Row="1" x:Name="LapCollectionView" SelectionMode="None" BackgroundColor="Transparent">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Padding="8" ColumnDefinitions="auto, *" RowDefinitions="auto">
-                                <Label Text="{Binding Number}" TextColor="#CFD8DC" FontSize="16" HorizontalOptions="Start" />
-                                <Label Text="{Binding Time}" TextColor="#ECEFF1" FontSize="16" HorizontalOptions="End" Grid.Column="1" />
+                            <Grid Padding="8,4" ColumnDefinitions="auto, *, *" RowDefinitions="auto">
+                                <Label Text="{Binding Id, StringFormat='Lap {0}'}" TextColor="#CFD8DC" FontSize="16" HorizontalOptions="Start" />
+                                <Label Text="{Binding LapTime, StringFormat='{0:mm\\:ss\\.ff}'}" TextColor="#ECEFF1" FontSize="16" HorizontalOptions="End" Grid.Column="1" />
+                                <Label Text="{Binding ElapsedTime, StringFormat='{0:hh\\:mm\\:ss\\.ff}'}" TextColor="#B0BEC5" FontSize="16" HorizontalOptions="End" Grid.Column="2" />
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </StackLayout>
+                <BoxView Grid.Row="2" HeightRequest="1" Color="#303030" Margin="8,0"/>
+            </Grid>
 
             <!-- 컨트롤 버튼 -->
             <Grid Grid.Row="3" ColumnDefinitions="*,*" ColumnSpacing="12" Padding="12">

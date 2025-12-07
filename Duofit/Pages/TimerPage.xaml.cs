@@ -2,99 +2,153 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Dispatching;
 using Microsoft.Maui.Graphics;
 
 namespace Duofit.Pages
 {
+    enum TimerPhase { Prep, Workout, End }
+
     public partial class TimerPage : ContentPage
     {
         IDispatcherTimer _timer;
-        
-        // phases: prep -> workout -> end (in seconds)
-        int _prep = 10;
-        int _workout = 60;
-        int _end = 10;
+        DateTime _tickStartTime;
 
-        List<int> _phaseDurations;
-        int _currentPhaseIndex = 0; // 0:prep,1:workout,2:end
-        int _phaseRemaining = 0;
+        double _prep = 10;
+        double _workout = 60;
+        double _end = 10;
+
+        List<double> _phaseDurations;
+        TimerPhase _currentPhase = TimerPhase.Prep;
+        double _phaseRemaining = 0;
         bool _isRunning = false;
 
-        float _progress = 0f; // 0..1 across current phase
-
+        float _progress = 1f;
+        
         public TimerPage()
         {
             InitializeComponent();
 
-            // prepare picker values (seconds 5..600 step 5)
-            var options = Enumerable.Range(1, 120).Select(i => i * 5).ToList();
-            foreach (var v in options)
-            {
-                PrepPicker.Items.Add(FormatSeconds(v));
-                WorkoutPicker.Items.Add(FormatSeconds(v));
-                EndPicker.Items.Add(FormatSeconds(v));
-            }
+            PrepEntry.Text = FormatSeconds((int)_prep);
+            WorkoutEntry.Text = FormatSeconds((int)_workout);
+            EndEntry.Text = FormatSeconds((int)_end);
 
-            // defaults: 10s / 60s / 10s -> pick index 2,12,2 (since options are multiples of 5)
-            PrepPicker.SelectedIndex = options.IndexOf(_prep);
-            WorkoutPicker.SelectedIndex = options.IndexOf(_workout);
-            EndPicker.SelectedIndex = options.IndexOf(_end);
+            PrepEntry.Focused += OnTimeEntryFocused;
+            WorkoutEntry.Focused += OnTimeEntryFocused;
+            EndEntry.Focused += OnTimeEntryFocused;
 
-            PrepPicker.SelectedIndexChanged += OnPickerChanged;
-            WorkoutPicker.SelectedIndexChanged += OnPickerChanged;
-            EndPicker.SelectedIndexChanged += OnPickerChanged;
- 
-            // Now treat 'end' as a trailing cooldown that overlaps the end of the workout.
-            // _phaseDurations only contains prep and workout. The end duration (_end) will
-            // be used as a trailing timer during the workout phase when remaining <= _end.
-            _phaseDurations = new List<int> { _prep, _workout };
-            _currentPhaseIndex = 0;
-            _phaseRemaining = _phaseDurations[_currentPhaseIndex];
+            PrepEntry.Unfocused += OnTimeEntryUnfocused;
+            WorkoutEntry.Unfocused += OnTimeEntryUnfocused;
+            EndEntry.Unfocused += OnTimeEntryUnfocused;
+
+            _phaseDurations = new List<double> { _prep, _workout };
+            _currentPhase = TimerPhase.Prep;
+            _phaseRemaining = _phaseDurations[(int)_currentPhase];
             UpdateLabels();
 
-            // timer 1s tick
             _timer = Dispatcher.CreateTimer();
-            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Interval = TimeSpan.FromMilliseconds(16);
             _timer.Tick += OnTick;
 
-            // setup GraphicsView draw handler
-            // pass a phase resolver that returns 2 when we're in overlapped end/cooldown
-            CircleView.Drawable = new CircleDrawable(() => _progress, () =>
-            {
-                if (_currentPhaseIndex == 1 && _phaseRemaining <= Math.Min(_end, _phaseDurations[1]))
-                    return 2; // 종료(overlay)
-                return _currentPhaseIndex;
-            });
+            CircleView.Drawable = new CircleDrawable(
+                () => _progress,
+                () => {
+                    if (_currentPhase == TimerPhase.Workout && _phaseRemaining <= Math.Min(_end, _phaseDurations[1]))
+                        return TimerPhase.End;
+                    return _currentPhase;
+                },
+                () => _phaseRemaining,
+                () => _phaseDurations
+            );
         }
 
-        void OnPickerChanged(object sender, EventArgs e)
+        private void OnTimeEntryFocused(object sender, FocusEventArgs e)
         {
-            if (sender == PrepPicker && PrepPicker.SelectedIndex >= 0)
-                _prep = (PrepPicker.SelectedIndex + 1) * 5;
-            if (sender == WorkoutPicker && WorkoutPicker.SelectedIndex >= 0)
-                _workout = (WorkoutPicker.SelectedIndex + 1) * 5;
-            if (sender == EndPicker && EndPicker.SelectedIndex >= 0)
-                _end = (EndPicker.SelectedIndex + 1) * 5;
+            if (sender is Entry entry)
+            {
+                Dispatcher.Dispatch(() =>
+                {
+                    entry.CursorPosition = 0;
+                    entry.SelectionLength = entry.Text?.Length ?? 0;
+                });
+            }
+        }
 
-            _phaseDurations = new List<int> { _prep, _workout };
-            // reset if not running
+        private void OnTimeEntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                var timeInSeconds = ParseTime(entry.Text);
+                entry.Text = FormatSeconds((int)timeInSeconds);
+            }
+        }
+
+        void OnTimeEntryTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is not Entry entry) return;
+
+            var text = e.NewTextValue ?? "";
+            var oldText = e.OldTextValue ?? "";
+
+            var cleanText = new string(text.Where(c => char.IsDigit(c) || c == ':').ToArray());
+
+            if (cleanText.Length == 2 && oldText.Length == 1 && !cleanText.Contains(":"))
+            {
+                entry.Text = cleanText + ":";
+                entry.CursorPosition = entry.Text.Length;
+            }
+            else if (cleanText != text)
+            {
+                entry.Text = cleanText;
+            }
+
+            UpdateDurationsFromEntries();
             if (!_isRunning)
             {
-                _currentPhaseIndex = 0;
-                _phaseRemaining = _phaseDurations[_currentPhaseIndex];
+                _currentPhase = TimerPhase.Prep;
+                _phaseRemaining = _phaseDurations[(int)_currentPhase];
+                _progress = 1f;
                 UpdateLabels();
                 CircleView.Invalidate();
             }
+        }
+
+        private void UpdateDurationsFromEntries()
+        {
+            _prep = ParseTime(PrepEntry.Text);
+            _workout = ParseTime(WorkoutEntry.Text);
+            _end = ParseTime(EndEntry.Text);
+            _phaseDurations = new List<double> { _prep, _workout };
+        }
+
+        private double ParseTime(string time)
+        {
+            if (string.IsNullOrWhiteSpace(time)) return 0;
+            var parts = time.Split(':');
+            if (parts.Length == 2)
+            {
+                int.TryParse(parts[0], out int minutes);
+                int.TryParse(parts[1], out int seconds);
+                return minutes * 60 + seconds;
+            }
+            if (parts.Length == 1)
+            {
+                int.TryParse(parts[0], out int seconds);
+                return seconds;
+            }
+            return 0;
         }
 
         void OnStartPauseClicked(object sender, EventArgs e)
         {
             if (!_isRunning)
             {
+                UpdateDurationsFromEntries();
                 _isRunning = true;
                 StartPauseButton.Text = "PAUSE";
+                _tickStartTime = DateTime.Now;
                 _timer.Start();
             }
             else
@@ -110,115 +164,104 @@ namespace Duofit.Pages
             _timer.Stop();
             _isRunning = false;
             StartPauseButton.Text = "START";
-            _currentPhaseIndex = 0;
-            _phaseDurations = new List<int> { _prep, _workout };
-            _phaseRemaining = _phaseDurations[_currentPhaseIndex];
-            _progress = 0f;
+            
+            _prep = 10;
+            _workout = 60;
+            _end = 10;
+
+            PrepEntry.Text = FormatSeconds((int)_prep);
+            WorkoutEntry.Text = FormatSeconds((int)_workout);
+            EndEntry.Text = FormatSeconds((int)_end);
+
+            _phaseDurations = new List<double> { _prep, _workout };
+            _currentPhase = TimerPhase.Prep;
+            _phaseRemaining = _phaseDurations[(int)_currentPhase];
+            _progress = 1f;
             UpdateLabels();
             CircleView.Invalidate();
         }
 
         void OnTick(object sender, EventArgs e)
         {
-            if (_phaseRemaining > 0)
+            if (!_isRunning) return;
+
+            var elapsed = (DateTime.Now - _tickStartTime).TotalSeconds;
+            _tickStartTime = DateTime.Now;
+
+            _phaseRemaining -= elapsed;
+
+            if (_phaseRemaining <= 0)
             {
-                _phaseRemaining--;
-                // Determine progress and beep behavior.
-                if (_currentPhaseIndex == 0)
+                if (_currentPhase == TimerPhase.Prep)
                 {
-                    // Prep phase: behave as before
-                    var total = _phaseDurations[_currentPhaseIndex];
-                    _progress = (float)(total - _phaseRemaining) / Math.Max(1, total);
-                    if (_phaseRemaining == 0)
-                        PlayBeep(big: true);
-                    else
-                        PlayBeep(big: false);
+                    _currentPhase = TimerPhase.Workout;
+                    _phaseRemaining += _phaseDurations[(int)_currentPhase];
+                    PlayBeep(big: true);
                 }
-                else // workout phase (index == 1)
+                else
                 {
-                    // If remaining time is within the trailing end/cooldown, switch to '종료' mode
-                    var endDuration = Math.Min(_end, _phaseDurations[1]);
-                    if (_phaseRemaining <= endDuration)
-                    {
-                        // progress relative to end duration (0..1)
-                        _progress = (float)(endDuration - _phaseRemaining) / Math.Max(1, endDuration);
-                        // beep each tick in cooldown, big beep when reaching zero
-                        if (_phaseRemaining == 0)
-                            PlayBeep(big: true);
-                        else
-                            PlayBeep(big: false);
-                    }
-                    else
-                    {
-                        // normal workout progress
-                        var total = _phaseDurations[_currentPhaseIndex];
-                        _progress = (float)(total - _phaseRemaining) / Math.Max(1, total);
-                    }
+                    _phaseRemaining = 0;
+                    _timer.Stop();
+                    _isRunning = false;
+                    StartPauseButton.Text = "START";
+                    PlayBeep(big: true);
                 }
+            }
+            
+            UpdateProgress();
+            UpdateLabels();
+            CircleView.Invalidate();
+        }
 
-                UpdateLabels();
-                CircleView.Invalidate();
-
-                if (_phaseRemaining == 0)
-                {
-                    // If we were in prep, move to workout. If we were in workout, the whole timer finishes
-                    if (_currentPhaseIndex < _phaseDurations.Count - 1)
-                    {
-                        _currentPhaseIndex++;
-                        _phaseRemaining = _phaseDurations[_currentPhaseIndex];
-                        UpdateLabels();
-                    }
-                    else
-                    {
-                        // workout finished (end/cooldown is overlapped and also finished) -> stop
-                        _timer.Stop();
-                        _isRunning = false;
-                        StartPauseButton.Text = "START";
-                    }
-                }
+        void UpdateProgress()
+        {
+            double currentPhaseTotal = _phaseDurations[(int)_currentPhase];
+            
+            if (_currentPhase == TimerPhase.Workout) // 운동 또는 종료 단계
+            {
+                _progress = (float)(_phaseRemaining / currentPhaseTotal);
+            }
+            else // 준비 단계
+            {
+                _progress = (float)(_phaseRemaining / currentPhaseTotal);
             }
         }
 
-        // PlayBeep: currently logs small/large beep events. Replace the Debug.WriteLine blocks
-        // with actual audio playback once you add audio resources (e.g. Resources/Raw/beep_small.mp3, beep_big.mp3)
         void PlayBeep(bool big)
         {
-            // Determine displayed phase name including overlapped end mode
-            var phaseIndex = _currentPhaseIndex;
-            if (phaseIndex == 1 && _phaseRemaining <= Math.Min(_end, _phaseDurations[1]))
-                phaseIndex = 2; // show 종료 during workout's trailing end
+            var displayPhase = _currentPhase;
+            if (displayPhase == TimerPhase.Workout && _phaseRemaining <= Math.Min(_end, _phaseDurations[1]))
+                displayPhase = TimerPhase.End;
 
-            var phaseName = phaseIndex == 0 ? "준비" : phaseIndex == 1 ? "운동" : "종료";
+            var phaseName = displayPhase switch
+            {
+                TimerPhase.Prep => "준비",
+                TimerPhase.Workout => "운동",
+                TimerPhase.End => "종료",
+                _ => ""
+            };
+
             if (big)
             {
                 Debug.WriteLine($"[BEEP-BIG] Phase={phaseName} reached 0");
-                // TODO: play big beep audio resource. Example (using a cross-platform audio player):
-                // var player = CrossSimpleAudioPlayer.Current;
-                // player.Load("beep_big.mp3", typeof(TimerPage).Assembly);
-                // player.Play();
             }
             else
             {
                 Debug.WriteLine($"[beep] Phase={phaseName} remaining={_phaseRemaining}s");
-                // TODO: play small beep audio resource. Example:
-                // var player = CrossSimpleAudioPlayer.Current;
-                // player.Load("beep_small.mp3", typeof(TimerPage).Assembly);
-                // player.Play();
             }
         }
 
         void UpdateLabels()
         {
-            // If we're in workout and within the trailing end duration, show '종료'
-            if (_currentPhaseIndex == 1 && _phaseRemaining <= Math.Min(_end, _phaseDurations[1]))
+            if (_currentPhase == TimerPhase.Workout && _phaseRemaining <= Math.Min(_end, _phaseDurations[1]))
             {
-                TimeLabel.Text = FormatSeconds(_phaseRemaining);
+                TimeLabel.Text = FormatSeconds((int)Math.Ceiling(_phaseRemaining));
                 PhaseLabel.Text = "종료";
             }
             else
             {
-                TimeLabel.Text = FormatSeconds(_phaseRemaining);
-                PhaseLabel.Text = _currentPhaseIndex == 0 ? "준비" : "운동";
+                TimeLabel.Text = FormatSeconds((int)Math.Ceiling(_phaseRemaining));
+                PhaseLabel.Text = _currentPhase == TimerPhase.Prep ? "준비" : "운동";
             }
         }
 
@@ -236,15 +279,23 @@ namespace Duofit.Pages
         }
     }
 
-    // drawable for circular progress
     class CircleDrawable : IDrawable
     {
         Func<float> _getProgress;
-        Func<int> _getPhase;
-        public CircleDrawable(Func<float> getProgress, Func<int> getPhase)
+        Func<TimerPhase> _getPhase;
+        private readonly Func<double> _getRemaining;
+        private readonly Func<List<double>> _getPhaseDurations;
+        
+        static float _startAngle = 90f; // 12시 방향
+        static Color _prepPhaseColor = Colors.YellowGreen;
+        static Color _workoutPhaseColor = Colors.Green;
+        static Color _endPhaseColor = Colors.Orange;
+        public CircleDrawable(Func<float> getProgress, Func<TimerPhase> getPhase, Func<double> getRemaining, Func<List<double>> getPhaseDurations)
         {
             _getProgress = getProgress;
             _getPhase = getPhase;
+            _getRemaining = getRemaining;
+            _getPhaseDurations = getPhaseDurations;
         }
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
@@ -254,29 +305,39 @@ namespace Duofit.Pages
             var cy = dirtyRect.Center.Y;
             var radius = Math.Min(dirtyRect.Width, dirtyRect.Height) / 2 - 8;
 
-            // background circle
-            canvas.FillColor = Colors.Transparent;
-            canvas.FillCircle(cx, cy, radius + 8);
-
-            // base ring
+            // 기본 링
             canvas.StrokeColor = Colors.LightGray;
             canvas.StrokeSize = 10;
             canvas.DrawCircle(cx, cy, radius);
 
-            // progress arc            
             float progress = Math.Clamp(_getProgress(), 0f, 1f);
-            int phase = _getPhase();
-            Color color = phase == 0 ? Colors.Orange : phase == 1 ? Colors.Green : Colors.Red;
+            TimerPhase phase = _getPhase();
+            Color color;
+
+            if (phase == TimerPhase.End) // 종료 단계
+            {
+                var phaseDurations = _getPhaseDurations();
+                if (phaseDurations.Count > 1)
+                {
+                    // 운동 단계의 진행률을 유지
+                    float workoutProgress = (float)(_getRemaining() / phaseDurations[1]);
+                    progress = Math.Clamp(workoutProgress, 0f, 1f);
+                }
+                color = _endPhaseColor;
+            }
+            else // 준비 또는 운동 단계
+            {
+                color = phase == TimerPhase.Prep ? _prepPhaseColor : _workoutPhaseColor;
+            }
+            
             canvas.StrokeColor = color;
             canvas.StrokeSize = 10;
+            canvas.StrokeLineCap = LineCap.Round;
 
-            // draw arc by drawing many short lines along angle (simple approximation)
-            var startAngle = -90f; // top
-            var sweep = progress * 360f;
-            // Use DrawArc with bounding rectangle
-            var rect = new RectF(cx - radius, cy - radius, radius * 2, radius * 2);
-            // DrawArc(RectF, float startAngle, float sweep, bool includeCenter, bool clockwise)
-            canvas.DrawArc(rect, startAngle, sweep, false, false);
+            // 12시 방향에서 시작하여 시계 방향으로 채워지는 호
+            var endAngle = _startAngle + (360 * progress);
+            
+            canvas.DrawArc(cx - radius, cy - radius, radius * 2, radius * 2, _startAngle, endAngle, false, false);
 
             canvas.RestoreState();
         }

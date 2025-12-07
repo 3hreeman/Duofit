@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Duofit.Pages.TimerPage"
+             Title="타이머"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
   <VerticalStackLayout Padding="18" Spacing="12">
 
@@ -9,17 +10,17 @@
     <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
       <VerticalStackLayout HorizontalOptions="Center" WidthRequest="110">
         <Label Text="준비" HorizontalOptions="Center" />
-        <Picker x:Name="PrepPicker" Title="준비" />
+        <Entry x:Name="PrepEntry" Keyboard="Numeric" HorizontalTextAlignment="Center" Placeholder="mm:ss" TextChanged="OnTimeEntryTextChanged" />
       </VerticalStackLayout>
 
       <VerticalStackLayout HorizontalOptions="Center" WidthRequest="110">
         <Label Text="운동" HorizontalOptions="Center" />
-        <Picker x:Name="WorkoutPicker" Title="운동" />
+        <Entry x:Name="WorkoutEntry" Keyboard="Numeric" HorizontalTextAlignment="Center" Placeholder="mm:ss" TextChanged="OnTimeEntryTextChanged" />
       </VerticalStackLayout>
 
       <VerticalStackLayout HorizontalOptions="Center" WidthRequest="110">
         <Label Text="종료" HorizontalOptions="Center" />
-        <Picker x:Name="EndPicker" Title="종료" />
+        <Entry x:Name="EndEntry" Keyboard="Numeric" HorizontalTextAlignment="Center" Placeholder="mm:ss" TextChanged="OnTimeEntryTextChanged" />
       </VerticalStackLayout>
     </HorizontalStackLayout>
 
