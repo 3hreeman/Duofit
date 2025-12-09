@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Duofit.ViewModels"
+             xmlns:models="clr-namespace:Duofit.Models"
+             x:Class="Duofit.Views.MainPage"
+             x:DataType="viewmodels:MainViewModel"
+             Title="{Binding Title}">
+
+    <!-- 
+    MVVM Architecture Compliance:
+    - View is pure XAML with NO code-behind logic
+    - All data and actions are bound to ViewModel properties and commands
+    - Uses data binding for all UI updates
+    - Commands handle all user interactions
+    -->
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="10">
+        
+        <!-- Header with Title and Add Button -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Padding="0,0,0,10">
+            <Label 
+                Grid.Column="0"
+                Text="My Workouts"
+                FontSize="24"
+                FontAttributes="Bold"
+                VerticalOptions="Center"/>
+            
+            <Button 
+                Grid.Column="1"
+                Text="Add Workout"
+                Command="{Binding AddWorkoutSessionCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                BackgroundColor="#512BD4"
+                TextColor="White"
+                CornerRadius="5"
+                Padding="15,10"/>
+        </Grid>
+
+        <!-- Workout Sessions List -->
+        <RefreshView 
+            Grid.Row="1"
+            IsRefreshing="{Binding IsBusy}"
+            Command="{Binding RefreshCommand}">
+            
+            <CollectionView 
+                ItemsSource="{Binding WorkoutSessions}"
+                SelectionMode="None"
+                EmptyView="No workout sessions yet. Tap 'Add Workout' to get started!">
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:WorkoutSession">
+                        <Frame 
+                            Margin="5"
+                            Padding="10"
+                            BackgroundColor="White"
+                            BorderColor="#E0E0E0"
+                            CornerRadius="8"
+                            HasShadow="True">
+                            
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,Auto">
+                                
+                                <!-- Workout Name -->
+                                <Label 
+                                    Grid.Row="0" Grid.Column="0"
+                                    Text="{Binding Name}"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    TextColor="#333333"/>
+                                
+                                <!-- Delete Button -->
+                                <Button 
+                                    Grid.Row="0" Grid.Column="1"
+                                    Text="Delete"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}, Path=DeleteWorkoutSessionCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="#FF4444"
+                                    TextColor="White"
+                                    CornerRadius="5"
+                                    Padding="10,5"
+                                    FontSize="12"/>
+                                
+                                <!-- Description -->
+                                <Label 
+                                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                    Text="{Binding Description}"
+                                    FontSize="14"
+                                    TextColor="#666666"
+                                    Margin="0,5,0,0"/>
+                                
+                                <!-- Type and Duration -->
+                                <HorizontalStackLayout 
+                                    Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                    Spacing="15"
+                                    Margin="0,5,0,0">
+                                    
+                                    <Label 
+                                        Text="{Binding Type, StringFormat='Type: {0}'}"
+                                        FontSize="12"
+                                        TextColor="#888888"/>
+                                    
+                                    <Label 
+                                        Text="{Binding DurationMinutes, StringFormat='Duration: {0} min'}"
+                                        FontSize="12"
+                                        TextColor="#888888"/>
+                                </HorizontalStackLayout>
+                                
+                                <!-- Session Date -->
+                                <Label 
+                                    Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                                    Text="{Binding SessionDate, StringFormat='Date: {0:MMM dd, yyyy}'}"
+                                    FontSize="12"
+                                    TextColor="#888888"
+                                    Margin="0,5,0,0"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator 
+            Grid.Row="2"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            Color="#512BD4"
+            Margin="0,10,0,0"/>
+    </Grid>
+</ContentPage>
